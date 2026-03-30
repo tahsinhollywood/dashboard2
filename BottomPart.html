@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hollywood Partnership KPI - Bottom Half</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Century Gothic', 'Montserrat', 'Sofia Pro', 'Pontiac', sans-serif;
+  background: #ffffff;
+  padding: 8px;
+}
+
+.scale-wrap {
+  transform: scale(0.82);
+  transform-origin: top left;
+  width: 121.95%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.card {
+  border-radius: 11px;
+  padding: 18px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 132px;
+  position: relative;
+}
+
+/* TEXT */
+.lbl { font-size: 9px; color: #fff; line-height:1.3; }
+.val { font-size: 30px; font-weight: 700; color: #fff; }
+.sub { font-size: 10px; color: #fff; }
+
+/* ================= PIE HOVER ================= */
+
+.pie-card { cursor: pointer; overflow: hidden; }
+
+.pie-front,
+.pie-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  transition: opacity 0.22s ease;
+}
+
+.pie-front { opacity: 1; z-index: 2; gap: 4px; }
+.pie-back  { opacity: 0; background: var(--card-bg); gap: 6px; }
+
+.pie-card:hover .pie-front { opacity: 0; }
+.pie-card:hover .pie-back  { opacity: 1; }
+
+.pie-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #292929;
+}
+
+/* donut */
+.pie {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #045F61 calc(var(--p) * 1%),  /* actual */
+    #B78A3F 0                     /* remaining */
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position: relative;
+  border: 2px solid #F8F8EE;
+}
+
+.pie::before {
+  content:"";
+  position:absolute;
+  width:48px;
+  height:48px;
+  background: var(--card-color);
+  border-radius:50%;
+}
+
+.pie-text {
+  position: relative;
+  font-size: 11px;
+  font-weight: 700;
+  color:#292929;
+}
+
+.pie-legend {
+  font-size: 7px;
+  color: #292929;
+}
+
+/* ================= TREE ================= */
+
+.tree-card { cursor:pointer; overflow:hidden; }
+
+.tree-front,
+.tree-back {
+  position:absolute;
+  inset:0;
+  border-radius:11px;
+  transition: opacity 0.22s ease;
+}
+
+.tree-front {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  opacity:1;
+  z-index:2;
+}
+
+.tree-back {
+  background:#F8F8EE;
+  color:#292929;
+  padding:10px;
+  opacity:0;
+}
+
+.tree-card:hover .tree-front { opacity:0; }
+.tree-card:hover .tree-back  { opacity:1; }
+
+.tree-title {
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.h-chart { display:flex; flex-direction:column; gap:6px; }
+
+.h-row {
+  display:grid;
+  grid-template-columns:28px 1fr 32px;
+  gap:6px;
+  align-items:center;
+}
+
+.year { font-size:8px; color:#292929; }
+
+.bar-wrap {
+  height:8px;
+  background:rgba(0,0,0,0.08);
+  border-radius:6px;
+}
+
+.h-bar {
+  height:100%;
+  background:#045F61;
+  border-radius:6px;
+}
+
+.val2 {
+  font-size:8px;
+  font-weight:600;
+  text-align:right;
+  color:#292929;
+}
+</style>
+</head>
+
+<body>
+<div class="scale-wrap">
+<div class="grid">
+
+  <!-- Ambassador -->
+  <div class="card" style="background:#F47E54;">
+    <div>
+      <div class="lbl">Ambassador Interactions</div>
+      <div class="val">11,615</div>
+      <div class="sub">Jan – Mar 2026</div>
+    </div>
+  </div>
+
+  <!-- CITYWIDE -->
+  <div class="card pie-card" style="background:#C8DF8C; --card-bg:#C8DF8C;">
+    <div class="pie-front">
+      <span class="lbl">Park & Green Space Citywide</span>
+      <span class="val">13%</span>
+    </div>
+
+    <div class="pie-back">
+      <div class="pie-title">Citywide</div>
+      <div class="pie" style="--p:13; --card-color:#C8DF8C;">
+        <span class="pie-text">13%</span>
+      </div>
+      <div class="pie-legend">
+        <span style="color:#045F61;">●</span> Park & Green Space &nbsp;
+        <span style="color:#B78A3F;"></span> 
+      </div>
+    </div>
+  </div>
+
+  <!-- HOLLYWOOD -->
+  <div class="card pie-card" style="background:#ECBDB7; --card-bg:#ECBDB7;">
+    <div class="pie-front">
+      <span class="lbl">Park & Green Space Hollywood</span>
+      <span class="val">0.26%</span>
+    </div>
+
+    <div class="pie-back">
+      <div class="pie-title">Hollywood</div>
+      <div class="pie" style="--p:0.26; --card-color:#ECBDB7;">
+        <span class="pie-text">0.26%</span>
+      </div>
+      <div class="pie-legend">
+        <span style="color:#045F61;">●</span> Park & Green Space &nbsp;
+        <span style="color:#B78A3F;"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stars -->
+  <div class="card" style="background:#D8B5D3;">
+    <div>
+      <div class="lbl">Stars Polished</div>
+      <div class="val">27,394</div>
+      <div class="sub">Jan – Mar 2026</div>
+    </div>
+  </div>
+
+  <!-- Trees -->
+  <div class="card tree-card" style="background:#6FAE7B;">
+    <div class="tree-front">
+      <span class="lbl">Trees Trimmed</span>
+      <span class="val">690</span>
+    </div>
+
+    <div class="tree-back">
+      <div class="tree-title">Trees Trimmed</div>
+
+      <div class="h-chart">
+        <div class="h-row">
+          <span class="year">2021</span>
+          <div class="bar-wrap"><div class="h-bar" style="width:72%;"></div></div>
+          <span class="val2">528</span>
+        </div>
+
+        <div class="h-row">
+          <span class="year">2022</span>
+          <div class="bar-wrap"><div class="h-bar" style="width:100%;"></div></div>
+          <span class="val2">734</span>
+        </div>
+
+        <div class="h-row">
+          <span class="year">2023</span>
+          <div class="bar-wrap"><div class="h-bar" style="width:39%;"></div></div>
+          <span class="val2">285</span>
+        </div>
+
+        <div class="h-row">
+          <span class="year">2024</span>
+          <div class="bar-wrap"><div class="h-bar" style="width:99%;"></div></div>
+          <span class="val2">727</span>
+        </div>
+
+        <div class="h-row">
+          <span class="year">2025</span>
+          <div class="bar-wrap"><div class="h-bar" style="width:94%;"></div></div>
+          <span class="val2">690</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
